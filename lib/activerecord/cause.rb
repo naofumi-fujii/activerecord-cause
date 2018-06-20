@@ -24,7 +24,7 @@ module ActiveRecord
       IGNORE_PAYLOAD_NAMES = ["SCHEMA", "EXPLAIN"]
 
       def sql(event)
-        return unless logger.debug?
+        return unless logger.info?
 
         payload = event.payload
         return if IGNORE_PAYLOAD_NAMES.include?(payload[:name])
@@ -54,7 +54,7 @@ module ActiveRecord
               "  #{name}  caused by #{cause}"
             end
 
-          debug(output)
+          info(output)
         end
       end
 
